@@ -1,0 +1,55 @@
+ </repository>
+     </repositories>
+ 
++    <properties>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
++
++        <java.version>1.8</java.version>
++        <atlassian-connect-spring-boot.version>1.3.1</atlassian-connect-spring-boot.version>
++        <dockerfile-maven-version>1.4.4</dockerfile-maven-version>
++    </properties>
++
+     <build>
+         <defaultGoal>spring-boot:run</defaultGoal>
+         <plugins>
+                     </execution>
+                 </executions>
+             </plugin>
++
++            <plugin>
++                <groupId>com.spotify</groupId>
++                <artifactId>dockerfile-maven-plugin</artifactId>
++                <version>${dockerfile-maven-version}</version>
++                <executions>
++                    <execution>
++                        <id>default</id>
++                        <goals>
++                            <goal>build</goal>
++                            <goal>push</goal>
++                        </goals>
++                    </execution>
++                </executions>
++                <configuration>
++                    <repository>nimblebydesign/data-plugin</repository>
++                    <tag>${project.version}</tag>
++                </configuration>
++            </plugin>
++
+         </plugins>
+     </build>
+ 
+         </profile>
+     </profiles>
+ 
+-    <properties>
+-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+-
+-        <java.version>1.8</java.version>
+-        <atlassian-connect-spring-boot.version>1.3.1</atlassian-connect-spring-boot.version>
+-    </properties>
+-
+     <dependencies>
+         <dependency>
+             <groupId>com.cnb.teamtracker</groupId>
